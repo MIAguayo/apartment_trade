@@ -1,0 +1,226 @@
+<div>
+  <div>
+    <h1>
+      List of all apartments
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new apartment
+    </h2>
+
+    <form action="/insert_apartment" method="post">
+      <div>
+        <label for="city_id_box">
+          City
+        </label>
+
+        <input type="text" id="city_id_box" name="query_city_id">
+      </div>
+
+      <div>
+        <label for="owner_id_box">
+          Owner
+        </label>
+
+        <input type="text" id="owner_id_box" name="query_owner_id">
+      </div>
+
+      <div>
+        <label for="from_date_box">
+          From date
+        </label>
+
+        <input type="date" id="from_date_box" name="query_from_date">
+      </div>
+
+      <div>
+        <label for="to_date_box">
+          To date
+        </label>
+
+        <input type="date" id="to_date_box" name="query_to_date">
+      </div>
+
+      <div>
+        <label for="price_box">
+          Price
+        </label>
+
+        <input type="text" id="price_box" name="query_price">
+      </div>
+
+      <div>
+        <input type="checkbox" id="availability_box" name="query_availability" value="1">
+
+        <label for="availability_box">Availability</label>
+      </div>
+
+      <div>
+        <input type="checkbox" id="negotiable_box" name="query_negotiable" value="1">
+
+        <label for="negotiable_box">Negotiable</label>
+      </div>
+
+      <div>
+        <label for="area_box">
+          Area
+        </label>
+
+        <textarea id="area_box" name="query_area" rows="3"></textarea>
+      </div>
+
+      <div>
+        <label for="description_box">
+          Description
+        </label>
+
+        <textarea id="description_box" name="query_description" rows="3"></textarea>
+      </div>
+
+      <div>
+        <label for="image_box">
+          Image
+        </label>
+
+        <input type="text" id="image_box" name="query_image">
+      </div>
+
+      <button>
+        Create apartment
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          City
+        </th>
+
+        <th>
+          Owner
+        </th>
+
+        <th>
+          From date
+        </th>
+
+        <th>
+          To date
+        </th>
+
+        <th>
+          Price
+        </th>
+
+        <th>
+          Availability
+        </th>
+
+        <th>
+          Negotiable
+        </th>
+
+        <th>
+          Area
+        </th>
+
+        <th>
+          Description
+        </th>
+
+        <th>
+          Image
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_apartments.each do |an_apartment| %>
+      <tr>
+        <td>
+          <%= an_apartment.id %>
+        </td>
+
+        <td>
+          <%= an_apartment.city_id %>
+        </td>
+
+        <td>
+          <%= an_apartment.owner_id %>
+        </td>
+
+        <td>
+          <%= an_apartment.from_date %>
+        </td>
+
+        <td>
+          <%= an_apartment.to_date %>
+        </td>
+
+        <td>
+          <%= an_apartment.price %>
+        </td>
+
+        <td>
+          <%= an_apartment.availability %>
+        </td>
+
+        <td>
+          <%= an_apartment.negotiable %>
+        </td>
+
+        <td>
+          <%= an_apartment.area %>
+        </td>
+
+        <td>
+          <%= an_apartment.description %>
+        </td>
+
+        <td>
+          <img src="<%= an_apartment.image %>">
+        </td>
+
+        <td>
+          <%= time_ago_in_words(an_apartment.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(an_apartment.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/apartments/<%= an_apartment.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

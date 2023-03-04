@@ -10,6 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2023_03_04_231749) do
+
+  create_table "apartments", force: :cascade do |t|
+    t.integer "city_id"
+    t.integer "owner_id"
+    t.date "from_date"
+    t.date "to_date"
+    t.integer "price"
+    t.integer "bedrooms"
+    t.integer "bathrooms"
+    t.boolean "parking_available"
+    t.boolean "availability"
+    t.boolean "negotiable"
+    t.text "area"
+    t.text "description"
+    t.string "image"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "cities", force: :cascade do |t|
+    t.text "city_name"
+    t.text "city_state"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email"
+    t.string "password_digest"
+    t.string "first_name"
+    t.string "last_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
 end
