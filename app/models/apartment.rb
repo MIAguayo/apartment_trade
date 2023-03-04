@@ -20,4 +20,17 @@
 #  owner_id          :integer
 #
 class Apartment < ApplicationRecord
+
+  belongs_to(:city, {
+    :class_name => "City",
+    :foreign_key => "city_id"
+    :required => true
+  })
+
+  belongs_to(:owner, {
+    :class_name => "User",
+    :foreign_key => "owner_id"
+    :required => true
+  })
+
 end
