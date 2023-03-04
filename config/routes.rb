@@ -1,6 +1,27 @@
 Rails.application.routes.draw do
 
+  get("/", { :controller => "apartments", :action => "index" })
 
+
+
+  # Routes for the Trade request resource:
+
+  # CREATE
+  post("/insert_trade_request", { :controller => "trade_requests", :action => "create" })
+          
+  # READ
+  get("/trade_requests", { :controller => "trade_requests", :action => "index" })
+  
+  get("/trade_requests/:path_id", { :controller => "trade_requests", :action => "show" })
+  
+  # UPDATE
+  
+  post("/modify_trade_request/:path_id", { :controller => "trade_requests", :action => "update" })
+  
+  # DELETE
+  get("/delete_trade_request/:path_id", { :controller => "trade_requests", :action => "destroy" })
+
+  #------------------------------
 
   # Routes for the City resource:
 

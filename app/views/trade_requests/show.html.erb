@@ -1,0 +1,116 @@
+<div>
+  <div>
+    <h1>
+      Trade request #<%= @the_trade_request.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/trade_requests">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_trade_request/<%= @the_trade_request.id %>">
+          Delete trade request
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Sender
+      </dt>
+      <dd>
+        <%= @the_trade_request.sender_id %>
+      </dd>
+
+      <dt>
+        Recipient
+      </dt>
+      <dd>
+        <%= @the_trade_request.recipient_id %>
+      </dd>
+
+      <dt>
+        Apartment
+      </dt>
+      <dd>
+        <%= @the_trade_request.apartment_id %>
+      </dd>
+
+      <dt>
+        Body
+      </dt>
+      <dd>
+        <%= @the_trade_request.body %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_trade_request.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_trade_request.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit trade request
+    </h2>
+
+    <form action="/modify_trade_request/<%= @the_trade_request.id %>"  method="post" >
+      <div>
+        <label for="sender_id_box">
+          Sender
+        </label>
+
+        <input type="text" id="sender_id_box" name="query_sender_id" value="<%= @the_trade_request.sender_id %>">
+      </div>
+
+      <div>
+        <label for="recipient_id_box">
+          Recipient
+        </label>
+
+        <input type="text" id="recipient_id_box" name="query_recipient_id" value="<%= @the_trade_request.recipient_id %>">
+      </div>
+
+      <div>
+        <label for="apartment_id_box">
+          Apartment
+        </label>
+
+        <input type="text" id="apartment_id_box" name="query_apartment_id" value="<%= @the_trade_request.apartment_id %>">
+      </div>
+
+      <div>
+        <label for="body_box">
+          Body
+        </label>
+
+        <textarea id="body_box" name="query_body"><%= @the_trade_request.body %></textarea>
+      </div>
+
+      <button>
+        Update trade request
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
