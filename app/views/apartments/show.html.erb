@@ -1,3 +1,6 @@
+<p><%= notice %></p>
+<p><%= alert %></p>
+
 <div>
   <div>
     <h1>
@@ -11,10 +14,13 @@
         </a>
       </div>
 
+      <%if session.fetch(:user_id) == @the_apartment.owner_id %>
       <div>
         <a href="/delete_apartment/<%= @the_apartment.id %>">
           Delete apartment
         </a>
+      <%else%>
+      <%end%>
       </div>
     </div>
 
@@ -23,29 +29,27 @@
         City
       </dt>
       <dd>
-        <%= @the_apartment.city_id %>
+        <%city = City.where({:id => @the_apartment.city_id}).at(0) %>
+        <%= city.city_name%>
       </dd>
 
       <dt>
         Owner
       </dt>
       <dd>
-        <%= @the_apartment.owner_id %>
+        <% owner = User.where({:id => @the_apartment.owner_id}).at(0) %>
+        <%= owner.first_name %> <%= owner.last_name %>      
       </dd>
 
       <dt>
-        From date
+        Available
+          <dd>
+          From: <%= @the_apartment.from_date %>
+          </dd>
+          <dd>
+          To: <%= @the_apartment.to_date %>
+          </dd>
       </dt>
-      <dd>
-        <%= @the_apartment.from_date %>
-      </dd>
-
-      <dt>
-        To date
-      </dt>
-      <dd>
-        <%= @the_apartment.to_date %>
-      </dd>
 
       <dt>
         Price
@@ -55,17 +59,25 @@
       </dd>
 
       <dt>
-        Availability
+        Still available?
       </dt>
       <dd>
-        <%= @the_apartment.availability %>
+        <%if @the_apartment.availability == true %>
+          yes
+        <% else %>
+          no
+        <%end%>
       </dd>
 
       <dt>
-        Negotiable
+        Price negotiable?
       </dt>
       <dd>
-        <%= @the_apartment.negotiable %>
+        <% if @the_apartment.negotiable == true %>
+          yes
+        <% else %>
+          no
+        <%end%>
       </dd>
 
       <dt>
@@ -111,6 +123,7 @@
 
 <div>
   <div>
+  <%if session.fetch(:user_id) == @the_apartment.owner_id %>
     <h2>
       Edit apartment
     </h2>
@@ -199,6 +212,8 @@
       <button>
         Update apartment
       </button>
+    <%else%>
+    <%end%>
     </form>
   </div>
 </div>
