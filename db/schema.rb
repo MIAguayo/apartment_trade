@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_04_233331) do
+ActiveRecord::Schema.define(version: 2023_03_06_031819) do
 
   create_table "apartments", force: :cascade do |t|
     t.integer "city_id"
@@ -33,6 +33,11 @@ ActiveRecord::Schema.define(version: 2023_03_04_233331) do
   create_table "cities", force: :cascade do |t|
     t.text "city_name"
     t.text "city_state"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "follow_requests", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

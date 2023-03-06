@@ -25,10 +25,10 @@
 
       <div>
         <label for="owner_id_box">
-          Owner
+          Owner ID
         </label>
 
-        <input type="text" id="owner_id_box" name="query_owner_id">
+        <input type="text" id="owner_id_box" name="query_owner_id" value="<%=session.fetch(:user_id)%>">
       </div>
 
       <div>
@@ -58,13 +58,13 @@
       <div>
         <input type="checkbox" id="availability_box" name="query_availability" value="1">
 
-        <label for="availability_box">Availability</label>
+        <label for="availability_box">Available?</label>
       </div>
 
       <div>
         <input type="checkbox" id="negotiable_box" name="query_negotiable" value="1">
 
-        <label for="negotiable_box">Negotiable</label>
+        <label for="negotiable_box">Price negotiable?</label>
       </div>
 
       <div>
@@ -166,11 +166,13 @@
         </td>
 
         <td>
-          <%= an_apartment.city_id %>
+        <%city = City.where({:id => @the_apartment.city_id}).at(0) %>
+        <%= city.city_name%>
         </td>
 
         <td>
-          <%= an_apartment.owner_id %>
+        <% owner = User.where({:id => @the_apartment.owner_id}).at(0) %>
+        <%= owner.first_name %> <%= owner.last_name %>          
         </td>
 
         <td>
@@ -186,13 +188,26 @@
         </td>
 
         <td>
-          <%= an_apartment.availability %>
-        </td>
+                  Still available?
+      </dt>
+      <dd>
+        <%if @the_apartment.availability == true %>
+          yes
+        <% else %>
+          no
+        <%end%>
+      </dd>
 
-        <td>
-          <%= an_apartment.negotiable %>
-        </td>
-
+      <dt>
+        Price negotiable?
+      </dt>
+      <dd>
+        <% if @the_apartment.negotiable == true %>
+          yes
+        <% else %>
+          no
+        <%end%>
+      </dd>
         <td>
           <%= an_apartment.area %>
         </td>
