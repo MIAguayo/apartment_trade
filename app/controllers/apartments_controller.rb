@@ -1,4 +1,10 @@
 class ApartmentsController < ApplicationController
+  
+  def new
+    @apartments = Apartment.all
+    @selected_city = "Chicago"
+  end
+  
   def index
     matching_apartments = Apartment.all
 

@@ -17,10 +17,15 @@
     <form action="/insert_apartment" method="post">
       <div>
         <label for="city_id_box">
-          City
+          Select a city:
         </label>
 
-        <input type="text" id="city_id_box" name="query_city_id">
+        <select name="city" id="city_id_box">
+          
+          <option value ' '> -- Please choose a city -- </option>
+          <option value = "Chicago"> Chicago </option>
+          <option value = "New York"> New York </option>
+        </select>
       </div>
 
       <div>
